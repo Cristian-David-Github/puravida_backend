@@ -42,7 +42,16 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "";
 // This is the place to include plugins. See API documentation for a thorough guide on plugins.
 const plugins = [
   `medusa-fulfillment-manual`,
-  `medusa-payment-manual`,
+  `medusa-payment-manual`,{
+    resolve: `medusa-file-spaces`,
+    options: {
+        spaces_url: process.env.SPACE_URL,
+        bucket: process.env.SPACE_BUCKET,
+        endpoint: process.env.SPACE_ENDPOINT,
+        access_key_id: process.env.SPACE_ACCESS_KEY_ID,
+        secret_access_key: process.env.SPACE_SECRET_ACCESS_KEY,
+    },},
+
   // Uncomment to add Stripe support.
   // You can create a Stripe account via: https://stripe.com
   // {
